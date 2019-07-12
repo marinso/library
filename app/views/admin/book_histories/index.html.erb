@@ -1,0 +1,32 @@
+<section class="p-3 p-lg-5">
+  <h1>Book Histories</h1>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>User email</th>
+      <th>Book title</th>
+      <th>Book author</th>
+      <th>Check out date</th>
+      <th>Check in date</th>
+      <th colspan="3">Actions</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @book_histories.each do |book_history| %>
+      <tr>
+        <td><%= book_history.user.email %></td>
+        <td><%= book_history.book.title %></td>
+        <td><%= book_history.book.author %></td>
+        <td><%= book_history.check_out_date %></td>
+        <td><%= book_history.check_in_date %></td>
+<!--        <td><%#= link_to 'Show', admin_book_histories_url(book_history) %></td>-->
+        <td><%= link_to 'Edit', edit_admin_book_history_url(book_history) %></td>
+        <td><%= link_to 'Destroy', admin_book_history_url(book_history), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+
