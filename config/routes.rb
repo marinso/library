@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   resources :books, only: [:index, :show]
   devise_for :users
   root to: "books#index"
+  get 'login', to: 'logins#new'
+  get 'login/create', to: 'logins#create', as: :create_login
 end
