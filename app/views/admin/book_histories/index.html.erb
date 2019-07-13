@@ -21,8 +21,12 @@
         <td><%= book_history.book.author %></td>
         <td><%= book_history.check_out_date %></td>
         <td><%= book_history.check_in_date %></td>
-        <td><%= link_to 'Edit', edit_admin_book_history_url(book_history) %></td>
-        <td><%= link_to 'Destroy', admin_book_history_url(book_history), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if book_history.book.is_borrowed? %>
+          <td><%= link_to "return", admin_book_history_return_path(book_history), method: :post, class: "btn btn-warning", style: "color: #ffffff" %></td>
+        <% end %>
+        </td>
+        <td><%= link_to 'Edit', edit_admin_book_history_url(book_history), class: "btn btn-warning", style: "color: #ffffff" %></td>
+        <td><%= link_to 'Destroy', admin_book_history_url(book_history), method: :delete, data: { confirm: 'Are you sure?' },  class: "btn btn-danger", style: "color: #ffffff" %></td>
       </tr>
     <% end %>
     </tbody>

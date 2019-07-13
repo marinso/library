@@ -20,8 +20,12 @@
         <td><%= book.description %></td>
         <td><%= book.author %></td>
         <td><%= book.isbn %></td>
-        <td><%= book.status %></td>
-        <td><%= link_to 'Show', book %></td>
+        <% if book.is_borrowed? %>
+          <td><div class="btn btn-danger"><%= book.status %></div></td>
+        <% else %>
+          <td><div class="btn btn-primary"><%= book.status %></div></td>
+        <% end %>
+        <td><%= link_to 'Show', book, :class => "btn btn-primary", :style => "color: #ffffff" %></td>
       </tr>
     <% end %>
   </tbody>

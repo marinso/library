@@ -4,7 +4,17 @@ class Book < ApplicationRecord
 
   scope :available, -> { where('status = ?', "available")}
 
+  def borrow
+    self.status = "unavailable"
+  end
+
+  def return
+    self.status = "available"
+  end
+
   def is_borrowed?
-    false
+    unless self.status == "available"
+      return true
+    end
   end
 end

@@ -12,10 +12,11 @@ def new
   @users = User.all
   @book_history = BookHistory.new
   @books = Book.available
-
 end
 
 def edit
+  @users = User.all
+  @books = User.all
 end
 
 def create
@@ -23,9 +24,11 @@ def create
 
   respond_to do |format|
     if @book_history.save
+      @book_history.book.borrow
+      @book_history.book.save
       format.html { redirect_to admin_book_histories_path, notice: 'Book history was successfully created.' }
     else
-      format.html { render :new }
+      format.html { redirect_to admin_book_histories_path }
     end
   end
 end
@@ -42,8 +45,21 @@ end
 
 def destroy
   @book_history.destroy
+  @book_history.book.return
+  @book_history.book.save
   respond_to do |format|
     format.html { redirect_to admin_book_histories_path, notice: 'Book history was successfully destroyed.' }
+  end
+end
+
+def return
+  @book_history = BookHistory.find(params[:book_history_id])
+  @book_history.book.return
+  @book_history.check_in_date =  DateTime.now.strftime("%Y-%m-%d")
+  respond_to do |format|
+    if @book_history.book.save && @book_history.save
+      format.html { redirect_to admin_book_histories_path, notice: 'Book was returned.' }
+    end
   end
 end
 

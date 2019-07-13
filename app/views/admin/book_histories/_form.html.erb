@@ -12,16 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :user %>
-    <%= form.select :user, options_for_select(@users.collect { |u| u.email}) %>
-  </div>
-
-  <div class="field">
-    <%= form.label :book %>
-    <%= form.select :book, @books.collect { |b| [b.title] } %>
-  </div>
-
-  <div class="field">
     <%= form.label :check_out_date %>
     <%= form.text_field :check_out_date %>
   </div>

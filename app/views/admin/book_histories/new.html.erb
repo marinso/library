@@ -19,7 +19,7 @@
 
     <div class="field">
       <%= form.label :book_id %>
-      <%= form.select :book_id, options_for_select(@books.collect{ |b| [[b.title, b.author].join(" - ")]}) %>
+      <%= form.select :book_id, options_for_select(@books.collect{ |b| [[b.title, b.author].join(" - "), b.id]}) %>
     </div>
 
     <div class="field">
