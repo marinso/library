@@ -21,7 +21,6 @@
         <td><%= book_history.book.author %></td>
         <td><%= book_history.check_out_date %></td>
         <td><%= book_history.check_in_date %></td>
-<!--        <td><%#= link_to 'Show', admin_book_histories_url(book_history) %></td>-->
         <td><%= link_to 'Edit', edit_admin_book_history_url(book_history) %></td>
         <td><%= link_to 'Destroy', admin_book_history_url(book_history), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

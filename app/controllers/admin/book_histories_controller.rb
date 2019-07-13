@@ -1,12 +1,18 @@
 class Admin::BookHistoriesController < ApplicationController
-  before_action :set_book_history, only: [:create, :destroy, :edit]
+  before_action :set_book_history, only: [:destroy, :edit, :update]
 
 def index
   @book_histories = BookHistory.all
 end
 
+def show
+end
+
 def new
+  @users = User.all
   @book_history = BookHistory.new
+  @books = Book.available
+
 end
 
 def edit
@@ -17,7 +23,7 @@ def create
 
   respond_to do |format|
     if @book_history.save
-      format.html { redirect_to admin_book_histories(@book_history), notice: 'Book history was successfully created.' }
+      format.html { redirect_to admin_book_histories_path, notice: 'Book history was successfully created.' }
     else
       format.html { render :new }
     end
@@ -27,7 +33,7 @@ end
 def update
   respond_to do |format|
     if @book_history.update(book_history_params)
-      format.html { redirect_to admin_book_histories(@book_history), notice: 'Book history was successfully updated.' }
+      format.html { redirect_to admin_book_histories_path, notice: 'Book history was successfully updated.' }
     else
       format.html { render :edit }
     end
@@ -37,7 +43,7 @@ end
 def destroy
   @book_history.destroy
   respond_to do |format|
-    format.html { redirect_to admin_book_histories, notice: 'Book history was successfully destroyed.' }
+    format.html { redirect_to admin_book_histories_path, notice: 'Book history was successfully destroyed.' }
   end
 end
 
@@ -47,7 +53,7 @@ def set_book_history
 end
 
 def book_history_params
-  params.require(:book_history).permit(:belongs_to, :belongs_to, :check_out_date, :check_in_date)
+  params.require(:book_history).permit(:user_id, :book_id, :check_out_date, :check_in_date)
 end
 end
 

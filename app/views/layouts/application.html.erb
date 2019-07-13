@@ -31,6 +31,8 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 <%= link_to "Books", admin_books_path, class: "dropdown-item"  %>
                 <%= link_to "Books histories", admin_book_histories_path, class: "dropdown-item"  %>
+                <%= link_to "Borrow book", new_admin_book_history_path, class: "dropdown-item"  %>
+                <%= link_to "Add new book", new_admin_book_path, class: "dropdown-item"  %>
               </div>
             </li>
           <% end %>

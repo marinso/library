@@ -16,14 +16,12 @@ ActiveRecord::Schema.define(version: 2019_07_11_163019) do
   enable_extension "plpgsql"
 
   create_table "book_histories", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "book_id"
+    t.integer "user_id"
+    t.integer "book_id"
     t.date "check_out_date"
     t.date "check_in_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_book_histories_on_book_id"
-    t.index ["user_id"], name: "index_book_histories_on_user_id"
   end
 
   create_table "books", force: :cascade do |t|

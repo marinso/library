@@ -1,0 +1,36 @@
+<section class="p-3 p-lg-5">
+  <%= form_for [:admin, @book_history] do |form| %>
+    <% if @book_history.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@book_history.errors.count, "error") %> prohibited this book_history from being saved:</h2>
+
+        <ul>
+          <% @book_history.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :user_id %>
+      <%= form.select :user_id, options_for_select(@users.collect { |u| [u.email, u.id]}) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :book_id %>
+      <%= form.select :book_id, options_for_select(@books.collect{ |b| [[b.title, b.author].join(" - ")]}) %>
+    </div>
+
+    <div class="field">
+      <%= form.label :check_out_date %>
+      <%= form.date_select :check_out_date %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back', admin_book_histories_path %>
+</section>
