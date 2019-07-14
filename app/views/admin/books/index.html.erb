@@ -17,7 +17,7 @@
     <tbody>
       <% @books.each do |book| %>
         <tr>
-          <td><%= image_tag(book.resize) %></td>
+          <td><%= image_tag(book.icon) %></td>
           <td><%= book.title %></td>
           <td><div><%= book.description %></div></td>
           <td><%= book.author %></td>

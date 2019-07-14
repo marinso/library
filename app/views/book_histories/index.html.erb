@@ -17,7 +17,13 @@
         <td><%= book_history.book.title %></td>
         <td><%= book_history.book.author %></td>
         <td><%= book_history.check_out_date %></td>
-        <td><%= book_history.check_in_date %></td>
+        <td>
+          <% if book_history.check_in_date.nil? %>
+            <p style="color:red">not returned</p>
+          <% else %>
+            <%= book_history.check_in_date %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>

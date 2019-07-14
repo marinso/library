@@ -16,8 +16,10 @@ class Book < ApplicationRecord
   end
 
   def is_borrowed?
-    unless self.status == "available"
+    if self.status == "unavailable"
       return true
+    else
+      return false
     end
   end
 
