@@ -38,7 +38,7 @@ class Admin::BooksController < ApplicationController
     end
   end
 
-  def destroyć
+  def destroy
     @book.thumbnail.purge
     @book.destroy
     respond_to do |format|
