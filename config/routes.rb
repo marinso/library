@@ -6,15 +6,12 @@ Rails.application.routes.draw do
       post 'return', format: false, id: /[0-9]+\/.+/
     end
   end
-  # namespace :admin do
-  #   post '/return', to: 'book_histories#return' ,format: false, id: /[0-9]+\/.+/
-  # end
+
 
 
   resources :book_histories, only: [:index]
   resources :books, only: [:index, :show]
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+
   root to: "books#index"
-  get 'login', to: 'logins#new'
-  get 'login/create', to: 'logins#create', as: :create_login
 end
