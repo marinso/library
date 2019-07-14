@@ -1,6 +1,5 @@
 class Admin::BooksController < ApplicationController
-
-  # before_action :require_admin!
+  before_action :require_admin!
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -56,11 +55,4 @@ class Admin::BooksController < ApplicationController
     def book_params
       params.require(:book).permit(:title, :description, :author, :isbn, :status)
     end
-
-    def require_admin!
-      unless current_user and current_user.role == 'admin'
-        redirect_to root_path, danger: "You don't belong there."
-      end
-    end
-
 end
