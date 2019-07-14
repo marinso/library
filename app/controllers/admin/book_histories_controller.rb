@@ -1,7 +1,8 @@
 class Admin::BookHistoriesController < ApplicationController
   before_action :set_book_history, only: [:destroy, :edit, :update]
+  before_action :require_admin!
 
-def index
+  def index
   @book_histories = BookHistory.all
 end
 
