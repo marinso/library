@@ -59,7 +59,8 @@ def return
   @book_history.check_in_date =  DateTime.now.strftime("%Y-%m-%d")
   respond_to do |format|
     if @book_history.book.save && @book_history.save
-      format.html { redirect_to admin_book_histories_path, notice: 'Book was returned.' }
+      flash.now[:notice] = 'Book was returned.'
+      format.html { redirect_to admin_book_histories_path }
     end
   end
 end
