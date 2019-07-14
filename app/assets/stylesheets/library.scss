@@ -1,0 +1,15 @@
+td {
+  div {
+    display: fixed;
+    max-height: 90px;
+    overflow-y: hidden;
+  }
+}
+
+.nav-item:hover .nav-link {
+  background-color: transparent;
+}
+
+.navbar-brand:hover {
+  background-color: transparent;
+}
