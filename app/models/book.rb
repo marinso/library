@@ -23,7 +23,7 @@ class Book < ApplicationRecord
     end
   end
 
-  def resize
+  def icon
     return self.thumbnail.variant(resize: "100x100")
   end
 end

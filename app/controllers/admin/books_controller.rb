@@ -38,8 +38,8 @@ class Admin::BooksController < ApplicationController
     end
   end
 
-  def destroy
-    @book.purge
+  def destroyć
+    @book.thumbnail.purge
     @book.destroy
     respond_to do |format|
       format.html { redirect_to admin_books_path, notice: 'Book was successfully destroyed.' }

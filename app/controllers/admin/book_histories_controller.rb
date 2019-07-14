@@ -57,7 +57,7 @@ def return
   @book_history = BookHistory.find(params[:book_history_id])
   @book_history.book.return
   @book_history.check_in_date =  DateTime.now.strftime("%Y-%m-%d")
-  respond_to do :html
+  respond_to do |format|
     if @book_history.book.save && @book_history.save
       flash.now[:notice] = 'Book was returned.'
       format.html { redirect_to admin_book_histories_path }
