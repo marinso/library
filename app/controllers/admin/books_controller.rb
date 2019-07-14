@@ -3,7 +3,7 @@ class Admin::BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
-    @books = Book.all
+    @books = Book.all.paginate(page: params[:page], per_page: 4)
   end
 
   def show
@@ -39,6 +39,7 @@ class Admin::BooksController < ApplicationController
   end
 
   def destroy
+    @book.purge
     @book.destroy
     respond_to do |format|
       format.html { redirect_to admin_books_path, notice: 'Book was successfully destroyed.' }
@@ -53,6 +54,6 @@ class Admin::BooksController < ApplicationController
     end
 
     def book_params
-      params.require(:book).permit(:title, :description, :author, :isbn, :status)
+      params.require(:book).permit(:title, :description, :author, :isbn, :status, :thumbnail)
     end
 end

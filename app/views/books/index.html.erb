@@ -4,6 +4,7 @@
   <table class="table">
   <thead>
     <tr>
+      <th>Picture</th>
       <th>Title</th>
       <th>Description</th>
       <th>Author</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @books.each do |book| %>
       <tr>
+        <td><%= image_tag(book.resize) %></td>
         <td><%= book.title %></td>
         <td><div><%= book.description %></div></td>
         <td><%= book.author %></td>
@@ -23,7 +25,7 @@
         <% if book.is_borrowed? %>
           <td><div class="btn btn-danger"><%= book.status %></div></td>
         <% else %>
-          <td><div class="btn btn-primary"><%= book.status %></div></td>
+          <td><div class="btn btn-success"><%= book.status %></div></td>
         <% end %>
         <td><%= link_to 'Show', book, :class => "btn btn-primary", :style => "color: #ffffff" %></td>
       </tr>
@@ -31,3 +33,6 @@
   </tbody>
 </table>
 </section>
+<%= will_paginate @books, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+
+

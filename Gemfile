@@ -2,6 +2,10 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+
+gem 'will_paginate-bootstrap4'
+gem 'active_storage_validations'
+gem 'mini_magick'
 gem "figaro"
 gem 'omniauth-google-oauth2'
 gem 'jquery-rails'

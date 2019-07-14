@@ -36,6 +36,11 @@
     <%= form.select :status, ["available", "unavailable"] %>
   </div>
 
+  <div class="field">
+    <%= form.label :thumbnail %>
+    <%= form.file_field :thumbnail %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

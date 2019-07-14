@@ -3,7 +3,7 @@ class Admin::BookHistoriesController < ApplicationController
   before_action :require_admin!
 
   def index
-  @book_histories = BookHistory.all
+  @book_histories = BookHistory.all.paginate(page: params[:page], per_page: 4)
 end
 
 def show
