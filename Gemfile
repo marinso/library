@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
+
+gem "google-cloud-storage", "~> 1.8", require: false
 gem 'will_paginate-bootstrap4'
 gem 'active_storage_validations'
 gem 'mini_magick'
