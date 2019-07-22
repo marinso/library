@@ -3,7 +3,9 @@ class Admin::BookHistoriesController < ApplicationController
   before_action :require_admin!
 
   def index
-  @book_histories = BookHistory.all.paginate(page: params[:page], per_page: 4)
+    @book_histories = BookHistory.all.paginate(page: params[:page], per_page: 4)
+    @book_histories = @book_histories.user(params[:user_id]) if params[:user_id].present?
+    @book_histories = @book_histories.not_returned if params[:not_returned].present?
 end
 
 def show
